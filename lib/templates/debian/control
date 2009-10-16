@@ -1,0 +1,14 @@
+Source: magent
+Maintainer: Gem Debianizer <gemdeb@gmail.com>
+Section: interpreters
+Priority: optional
+Homepage: http://gemcutter.org/magent
+Build-Depends: debhelper (>= 4), ruby1.8, ruby1.8-dev
+Standards-Version: 3.8.0
+
+Package: magent
+Architecture: all
+Depends: magent
+Description: Short description
+  Long description
+

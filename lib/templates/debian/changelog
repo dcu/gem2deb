@@ -1,0 +1,6 @@
+magent (0.1.1) unstable; urgency=low
+
+  * debianize magent
+
+ -- Gem Debianizer <debdeb@gmail.com>  Sun, 26 Oct 2008 14:19:34 +0200
+
