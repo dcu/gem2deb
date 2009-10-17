@@ -1,14 +1,13 @@
-Source: magent
+Source: <%= @tpl_options[:spec].name %>
 Maintainer: Gem Debianizer <gemdeb@gmail.com>
 Section: interpreters
 Priority: optional
-Homepage: http://gemcutter.org/magent
-Build-Depends: debhelper (>= 4), ruby1.8, ruby1.8-dev
+Homepage: <%= @tpl_options[:spec].homepage %>
+Build-Depends: debhelper (>= 4), ruby1.8, ruby1.8-dev, fakeroot
 Standards-Version: 3.8.0
 
-Package: magent
-Architecture: all
-Depends: magent
-Description: Short description
-  Long description
-
+Package: <%= @tpl_options[:spec].name %>
+Architecture: <%= @tpl_options[:arch] %>
+Depends: ${shlibs:Depends}
+Description: <%= @tpl_options[:spec].summary %>
+ <%= (@tpl_options[:spec].description.split("\n").map{|e| e.strip.empty? ? "." : e}.join("\n ")) %>

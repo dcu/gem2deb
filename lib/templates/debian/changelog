@@ -1,6 +1,5 @@
-magent (0.1.1) unstable; urgency=low
+<%= @tpl_options[:spec].name %> (<%= @tpl_options[:spec].version %>) unstable; urgency=low
 
-  * debianize magent
+  * debianize <%= @tpl_options[:spec].name %> gem
 
- -- Gem Debianizer <debdeb@gmail.com>  Sun, 26 Oct 2008 14:19:34 +0200
-
+ -- Gem Debianizer <gemdeb@gmail.com>  <%= Time.now.strftime("%a, %d %b %Y %H:%M:%S %z") %>

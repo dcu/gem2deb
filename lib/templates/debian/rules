@@ -3,24 +3,23 @@ SHELL	= /bin/bash
 
 tmp	= debian/tmp
 bindir	= /usr/bin
-libdir18 = $(shell ruby1.8 -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
-archdir18 = $(shell ruby1.8 -r rbconfig -e 'print Config::CONFIG["archdir"]')
-libdir19 = $(shell ruby1.9 -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
-archdir19 = $(shell ruby1.9 -r rbconfig -e 'print Config::CONFIG["archdir"]')
+libdir = <%= @tpl_options[:libdir] %>
+ 
 
 build:
 	dh_testdir
 
-	mkdir -p "$(tmp)$(libdir18)/deb/"
-	cp -r gems/* "$(tmp)$(libdir18)/deb/"
-
-	touch build-ruby1.8-stamp
+	mkdir -p "$(tmp)$(libdir)/deb/"
+	<% @tpl_options[:files].each do |file| %>
+	<% next if file =~ /^debian/ %>
+	-cp -r <%= file %> "$(tmp)$(libdir)/deb/"
+	<% end %>
 
 install: build
 	dh_testdir
 	dh_testroot
 
-	echo "$(tmp)$(libdir18)/deb/" >debian/magent.install
+	echo "$(tmp)$(libdir)/deb/" >debian/<%= @tpl_options[:spec].name %>.install
 
 	dh_install
 
