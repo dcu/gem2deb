@@ -22,6 +22,8 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "TODO",
+     "VERSION",
+     "gem2deb.gemspec",
      "lib/commands/deb.rb",
      "lib/rubygems_plugin.rb",
      "lib/templates/debian/changelog",
@@ -29,6 +31,7 @@ Gem::Specification.new do |s|
      "lib/templates/debian/control",
      "lib/templates/debian/copyright",
      "lib/templates/debian/rules",
+     "lib/templates/executable",
      "test/gem2deb_test.rb",
      "test/test_helper.rb"
   ]
