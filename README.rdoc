@@ -1,6 +1,12 @@
 = gem2deb
 
-Description goes here.
+Converts a rubygem to debian package.
+
+== Dependencies
+
+- debhelper (sudo apt-get install debhelper)
+- fakeroot (sudo apt-get install fakeroot)
+- ruby-dev
 
 == Note on Patches/Pull Requests
  
@@ -16,3 +22,4 @@ Description goes here.
 == Copyright
 
 Copyright (c) 2009 David A. Cuadrado. See LICENSE for details.
+
