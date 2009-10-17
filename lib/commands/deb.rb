@@ -42,6 +42,8 @@ class Gem::Commands::DebCommand < Gem::Command
     @templates_dir = File.dirname(__FILE__)+"/../templates"
     @install_dir = Dir.tmpdir+"/gemdeb_home"
     @current_dir = Dir.getwd
+    @rubylibdir = Config::CONFIG["rubylibdir"]
+    @dist_dir = "#{@rubylibdir}/deb"
 
     FileUtils.mkpath(@install_dir)
   end
@@ -96,13 +98,23 @@ class Gem::Commands::DebCommand < Gem::Command
 
       tpl_path = File.join(debian_tpl_dir, tpl)
 
-      @tpl_options = {:spec => spec, :files => files}
-      @tpl_options[:libdir] = Config::CONFIG["rubylibdir"]
+      @tpl_options = {:spec => spec, :files => files, :distdir => "#{@dist_dir}/#{spec.full_name}"}
       @tpl_options[:arch] = "all" # FIXME: autodetect
 
       data = ERB.new(File.read(tpl_path)).result(binding)
       File.open("#{debian_dir}/#{tpl}", "w") do |f|
         f.puts data
+      end
+    end
+
+    binary_dir = debian_dir+"/bin/"
+    FileUtils.mkpath(binary_dir)
+
+    spec.executables.each do |executable_name|
+      executable = ERB.new(File.read(@templates_dir + "/executable")).result(binding)
+
+      File.open("#{binary_dir}/#{executable_name}", "w") do |f|
+        f.puts executable
       end
     end
 

@@ -3,23 +3,25 @@ SHELL	= /bin/bash
 
 tmp	= debian/tmp
 bindir	= /usr/bin
-libdir = <%= @tpl_options[:libdir] %>
- 
+libdir = <%= @rubylibdir %>
+distdir = <%= @tpl_options[:distdir] %>
 
 build:
 	dh_testdir
 
-	mkdir -p "$(tmp)$(libdir)/deb/"
+	mkdir -p "$(tmp)$(distdir)" "$(tmp)$(bindir)"
 	<% @tpl_options[:files].each do |file| %>
 	<% next if file =~ /^debian/ %>
-	-cp -r <%= file %> "$(tmp)$(libdir)/deb/"
+	-cp -r <%= file %> "$(tmp)$(distdir)"
 	<% end %>
+	-cp -r debian/bin/* "$(tmp)$(bindir)"
 
 install: build
 	dh_testdir
 	dh_testroot
 
-	echo "$(tmp)$(libdir)/deb/" >debian/<%= @tpl_options[:spec].name %>.install
+	echo "$(tmp)$(distdir)" >debian/<%= @tpl_options[:spec].name %>.install
+	echo "$(tmp)$(bindir)" >>debian/<%= @tpl_options[:spec].name %>.install
 
 	dh_install
 
