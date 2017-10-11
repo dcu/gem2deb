@@ -1,7 +1,6 @@
 $:.unshift File.dirname(__FILE__)
 
 require 'rubygems/command_manager'
-#require 'commands/abstract_command'
 
 %w[deb].each do |command|
   require "commands/#{command}_command"
