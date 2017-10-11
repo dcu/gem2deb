@@ -1,0 +1,16 @@
+PATH
+  remote: .
+  specs:
+    gem2deb (0.0.2)
+
+GEM
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  gem2deb!
+
+BUNDLED WITH
+   1.15.4
