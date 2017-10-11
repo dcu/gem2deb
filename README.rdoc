@@ -8,20 +8,8 @@ Converts a rubygem to debian package.
 - fakeroot (sudo apt-get install fakeroot)
 - ruby-dev
 
-== Installation
-
-- sudo gem install gemcutter
-- sudo gem tumble
-- sudo gem install gem2deb
-
-== Usage Examples
-
-- gem deb <package name>
-- gem deb -v=<version> <package>
-- gem deb --ignore-dependencies <package>
-
 == Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
