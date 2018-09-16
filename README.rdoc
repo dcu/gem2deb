@@ -11,7 +11,7 @@ Converts a rubygem to debian package.
 == Installation
 
 - sudo gem install gemcutter
-- sudo gem tumble
+- sudo gem install tumble
 - sudo gem install gem2deb
 
 == Usage Examples
